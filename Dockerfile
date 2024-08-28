@@ -2,7 +2,7 @@
 FROM node:14
 
 # Crear y cambiar al directorio de trabajo
-WORKDIR /usr/src/app
+WORKDIR /src/app
 
 # Copiar los archivos del proyecto
 COPY package*.json ./
