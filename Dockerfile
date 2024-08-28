@@ -1,8 +1,16 @@
-FROM mysql:8.0
+# Usa una imagen base de Node.js
+FROM node:14
 
-# Configurar variables de entorno para MySQL
-ENV MYSQL_ROOT_PASSWORD=system
-ENV MYSQL_DATABASE=dbcristina
+# Crear y cambiar al directorio de trabajo
+WORKDIR /usr/src/app
 
-# Exponer el puerto MySQL
-EXPOSE 3306
+# Copiar los archivos del proyecto
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+# Exponer el puerto en el que tu aplicación escucha
+EXPOSE 10000
+
+# Ejecutar la aplicación
+CMD ["node", "server.js"]
